@@ -18,7 +18,7 @@ export default function BlogDetails({ post }: BlogDetailsProps) {
     <div className="container mx-auto px-4 py-8">
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold">{post.title}</CardTitle>
+          <CardTitle className="text-2xl font-bold md:text-3xl">{post.title}</CardTitle>
           <div className="flex items-center mt-4">
             <Avatar className="h-8 w-8 mr-2">
               <AvatarFallback>{post.authorId.charAt(0)}</AvatarFallback>

@@ -30,7 +30,7 @@ blogRouter.get("/all/bulk", async (c) => {
   console.log(blogs);
   return c.json(blogs);
 });
-blogRouter.use("/*", async (c, next) => {
+blogRouter.use("/auth/*", async (c, next) => {
   const authHeader = c.req.header("Authorization");
   if (!authHeader) {
     return c.json({ error: "Unauthorized" }, 401);
@@ -52,7 +52,7 @@ blogRouter.use("/*", async (c, next) => {
 
 
 
-blogRouter.get("/:id", async (c) => {
+blogRouter.get("/auth/:id", async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
@@ -67,7 +67,7 @@ blogRouter.get("/:id", async (c) => {
   return c.json(blog);
 });
 
-blogRouter.post("/publish", async (c) => {
+blogRouter.post("/auth/publish", async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
@@ -92,7 +92,7 @@ blogRouter.post("/publish", async (c) => {
   });
 });
 
-blogRouter.put("/", async (c) => {
+blogRouter.put("/auth/", async (c) => {
   const userId = c.get("jwtPayload");
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,

@@ -37,7 +37,7 @@ export default function CreateBlog() {
     e.preventDefault();
     try {
       const token=localStorage.getItem('token');
-      const response = await axios.post(`${defaultURL}/blog/publish`,blogPost, {
+      const response = await axios.post(`${defaultURL}/blog/auth/publish`,blogPost, {
         headers: {
           'Authorization': token, // Assuming JWT is sent in Authorization header
           'Content-Type': 'application/json',

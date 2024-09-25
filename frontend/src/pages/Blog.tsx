@@ -26,7 +26,7 @@ const BlogPage: React.FC = () => {
         return;
       }
 
-      const url = `${defaultURL}/blog/${id}`; // Replace with your actual API endpoint
+      const url = `${defaultURL}/blog/auth/${id}`; // Replace with your actual API endpoint
 
       try {
         const response = await axios.get<BlogPost>(url, {
